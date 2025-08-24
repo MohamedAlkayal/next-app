@@ -1,7 +1,7 @@
 import React from "react";
 import { Icon } from '@iconify/react';
 
-const NoSearchTerm: React.FC = () => (
+const Idle: React.FC = () => (
     <div className="flex flex-col items-center justify-center py-12 text-white">
         <Icon icon="mdi:podcast" className="text-6xl mb-4 text-blue-400 animate-bounce" />
         <h2 className="text-2xl font-bold mb-2">Search for Podcasts</h2>
@@ -9,4 +9,4 @@ const NoSearchTerm: React.FC = () => (
     </div>
 );
 
-export default NoSearchTerm;
+export default Idle;

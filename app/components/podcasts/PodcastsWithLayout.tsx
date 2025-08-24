@@ -12,11 +12,9 @@ interface Props {
 export default function PodcastsWithLayout({ podcasts, searchTerm }: Props) {
     const { layout, setLayout } = useLayoutPreference();
 
-    // For podcast container, we only care if it's grid or not
     const isGridView = layout === 'grid';
 
     const handleToggleLayout = () => {
-        // Toggle between grid and scroll only
         setLayout(isGridView ? 'scroll' : 'grid');
     };
 

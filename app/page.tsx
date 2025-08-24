@@ -1,6 +1,6 @@
-import Error from "@/app/components/shared/Error";
-import NoSearchTerm from "@/app/components/shared/NoSearchTerm";
 import { cookies } from "next/headers";
+import Error from "@/app/components/shared/Error";
+import Idle from "@/app/components/shared/Idle";
 import { fetchPodcasts } from "@/app/services/podcasts";
 import { fetchEpisodes } from "@/app/services/episodes";
 import { Podcast } from "@/app/types/Podcast";
@@ -29,7 +29,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ [
   }
 
   if (!searchTerm.trim()) {
-    return <NoSearchTerm />;
+    return <Idle />;
   }
 
   if (error) {
