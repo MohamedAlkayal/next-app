@@ -89,5 +89,4 @@ npm run start
 
 ### Technical Improvements
 - Add unit and integration tests for key components
-- Optimize image loading with next/image
 - Implement analytics for user behavior tracking

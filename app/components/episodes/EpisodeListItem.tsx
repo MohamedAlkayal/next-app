@@ -6,6 +6,7 @@ import React from "react";
 import { formatDuration } from "@/app/utils/formatDuration";
 import { formatShortDate } from "@/app/utils/formatShortDate";
 import { Icon } from '@iconify/react';
+import Image from "next/image";
 
 interface EpisodeCardProps {
     collection: string;
@@ -19,7 +20,18 @@ interface EpisodeCardProps {
 
 const EpisodeListItem: React.FC<EpisodeCardProps> = ({ collection, track, release, duration, image, description, isCompact = false }) => (
     <div className="flex items-center gap-4 p-3 border-b border-white/10 cursor-pointer duration-300 hover:bg-black/20">
-        <img src={image} alt="artwork" className={"rounded object-cover " + (isCompact ? 'w-12 h-12' : 'w-28 h-28')} />
+        <div className={`relative rounded overflow-hidden ${isCompact ? 'w-12 h-12' : 'w-28 h-28'}`}>
+            <Image
+                src={image || "/media/images/placeholder.webp"}
+                alt={track || "artwork"}
+                fill
+                sizes={isCompact ? "48px" : "112px"}
+                className="object-cover"
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL="/media/images/placeholder.webp"
+            />
+        </div>
         <div className="w-full">
             <div className="flex items-center justify-between mb-1">
                 <p className="mb-0 overflow-hidden text-white whitespace-nowrap text-ellipsis">{collection}</p>

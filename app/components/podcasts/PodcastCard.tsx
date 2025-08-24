@@ -1,5 +1,6 @@
 import React from "react";
 import { Icon } from '@iconify/react';
+import Image from "next/image";
 
 interface PodcastCardProps {
     title: string;
@@ -10,8 +11,19 @@ interface PodcastCardProps {
 
 const PodcastCard: React.FC<PodcastCardProps> = ({ title, producer, image, isGridView = false }) => (
     <div className="cursor-pointer">
-        <div className={`rounded overflow-hidden bg-mirage-800 mb-2 ${isGridView ? "" : "w-32 h-32 sm:w-48 sm:h-48 md:w-60 md:h-60"}`}>
-            <img src={image} alt={title} className="object-cover w-full h-full" />
+        <div className={`rounded overflow-hidden bg-mirage-800 mb-2 ${isGridView ? "aspect-square w-full" : "w-32 h-32 sm:w-48 sm:h-48 md:w-60 md:h-60"}`}>
+            <div className="relative w-full h-full">
+                <Image
+                    src={image}
+                    alt={title}
+                    fill
+                    sizes="(max-width: 640px) 128px, (max-width: 768px) 192px, 240px"
+                    className="object-cover"
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL="/media/images/placeholder.webp"
+                />
+            </div>
         </div>
         <div className='flex justify-between items-center mb-1'>
             <p className='text-white duration-300 cursor-pointer hover:underline truncate max-w-28 sm:max-w-32 md:max-w-36'>{title}</p>

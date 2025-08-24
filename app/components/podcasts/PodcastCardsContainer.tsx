@@ -23,11 +23,9 @@ const PodcastCardsContainer: React.FC<PodcastCardsContainerProps> = ({
     isGridView: controlledIsGridView,
     onToggleLayout
 }) => {
-    // Use internal state if not controlled from outside
     const [internalIsGridView, setInternalIsGridView] = useState(false);
     const [layoutMenuOpen, setLayoutMenuOpen] = useState(false);
 
-    // If isGridView is provided, use it; otherwise use internal state
     const isGridView = controlledIsGridView !== undefined ? controlledIsGridView : internalIsGridView;
 
     const toggleLayout = () => {
@@ -84,7 +82,7 @@ const PodcastCardsContainer: React.FC<PodcastCardsContainerProps> = ({
                     <Grid>
                         {podcasts.map((podcast: Podcast, idx: number) => (
                             <PodcastCard
-                                key={idx}
+                                key={podcast.collectionId + idx}
                                 title={podcast.collectionName || podcast.trackName || ""}
                                 producer={podcast.artistName || ""}
                                 image={podcast.artworkUrl600 || podcast.artworkUrl100 || podcast.artworkUrl60 || ""}
@@ -96,7 +94,7 @@ const PodcastCardsContainer: React.FC<PodcastCardsContainerProps> = ({
                     <Scroll>
                         {podcasts.map((podcast: Podcast, idx: number) => (
                             <PodcastCard
-                                key={idx}
+                                key={podcast.collectionId + idx}
                                 title={podcast.collectionName || podcast.trackName || ""}
                                 producer={podcast.artistName || ""}
                                 image={podcast.artworkUrl600 || podcast.artworkUrl100 || podcast.artworkUrl60 || ""}

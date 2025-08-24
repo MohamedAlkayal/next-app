@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Icon } from '@iconify/react';
+import Image from "next/image";
 
 const Header = () => {
     const searchParams = useSearchParams();
@@ -26,8 +27,13 @@ const Header = () => {
     return (
         <div className="p-3 sticky top-0 z-10 text-white/50 bg-gradient-to-b from-mirage-900/90 to-mirage-950/50 backdrop-blur-md ">
             <div className="flex justify-between items-center gap-1">
-                <div className="h-11 w-11 block md:hidden">
-                    <img src="/media/images/logo.svg" alt="Logo" className=" object-contain w-full h-full" />
+                <div className="h-11 w-11 block md:hidden relative">
+                    <Image
+                        src="/media/images/logo.svg"
+                        alt="Logo"
+                        fill
+                        priority
+                        className="object-contain" />
                 </div>
                 <button className="bg-transparent cursor-pointer duration-300 hover:text-white">
                     <Icon icon="lucide:chevron-left" className='text-2xl' />

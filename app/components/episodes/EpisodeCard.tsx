@@ -6,6 +6,7 @@ import React from "react";
 import { Icon } from '@iconify/react';
 import { formatDuration } from "@/app/utils/formatDuration";
 import { formatShortDate } from "@/app/utils/formatShortDate";
+import Image from "next/image";
 
 interface EpisodeCardProps {
     collection: string;
@@ -20,10 +21,21 @@ const EpisodeCard: React.FC<EpisodeCardProps> = ({ collection, track, release, d
     <div className="p-[1px] rounded bg-gradient-to-b from-white/15 to-transeparent w-full min-w-[440px] overflow-hidden">
         <div className="flex bg-mirage-800  rounded overflow-hidden">
             <div className="w-36 h-36 shrink-0 relative cursor-pointer group/episode bg-mirage-800">
-                <div className="absolute top-0 left-0 w-full h-full bg-black/60 flex items-center justify-center opacity-0 group-hover/episode:opacity-100 transition-opacity duration-300">
+                <div className="absolute top-0 left-0 w-full h-full bg-black/60 flex items-center justify-center opacity-0 group-hover/episode:opacity-100 transition-opacity duration-300 z-10">
                     <Icon icon="heroicons:play-16-solid" className="text-white text-6xl" />
                 </div>
-                <img src={image} alt={track} className="w-full h-full object-cover" />
+                <div className="relative w-full h-full">
+                    <Image
+                        src={image || "/media/images/placeholder.webp"}
+                        alt={track}
+                        fill
+                        sizes="(max-width: 768px) 144px, 144px"
+                        className="object-cover"
+                        loading="lazy"
+                        placeholder="blur"
+                        blurDataURL="/media/images/placeholder.webp"
+                    />
+                </div>
             </div>
             <div className="flex-1 min-w-0 flex flex-col justify-between p-4 text-sm text-white">
                 <div>
