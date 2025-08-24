@@ -1,14 +1,14 @@
-import Error from "./components/shared/Error";
-import NoSearchTerm from "./components/shared/NoSearchTerm";
+import Error from "@/app/components/shared/Error";
+import NoSearchTerm from "@/app/components/shared/NoSearchTerm";
 import { cookies } from "next/headers";
-import { fetchPodcasts } from "./services/podcasts";
-import { fetchEpisodes } from "./services/episodes";
-import { Podcast } from "./types/Podcast";
-import { Episode } from "./types/Episode";
-import { ItunesSearchResponse } from "./types/Response";
-import EpisodesWithLayout from "./components/episodes/EpisodesWithLayout";
-import PodcastsWithLayout from "./components/podcasts/PodcastsWithLayout";
-import LayoutPreferenceClient, { LayoutType } from "./LayoutPreferenceClient";
+import { fetchPodcasts } from "@/app/services/podcasts";
+import { fetchEpisodes } from "@/app/services/episodes";
+import { Podcast } from "@/app/types/Podcast";
+import { Episode } from "@/app/types/Episode";
+import { ItunesSearchResponse } from "@/app/types/Response";
+import EpisodesWithLayout from "@/app/components/episodes/EpisodesWithLayout";
+import PodcastsWithLayout from "@/app/components/podcasts/PodcastsWithLayout";
+import LayoutPreferenceClient, { LayoutType } from "@/app/LayoutPreferenceClient";
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ [key: string]: string }> }) {
   const params = await searchParams;
@@ -37,14 +37,20 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ [
   }
 
   const cookieStore = await cookies();
-  const layoutCookie = cookieStore.get("episodesLayout")?.value;
   const validLayouts: LayoutType[] = ["grid", "scroll", "list", "compact"];
-  const initialLayout: LayoutType = validLayouts.includes(layoutCookie as LayoutType) ? (layoutCookie as LayoutType) : "grid";
+
+  const podcastLayoutCookie = cookieStore.get("podcastsLayout")?.value;
+  const initialPodcastLayout: LayoutType = validLayouts.includes(podcastLayoutCookie as LayoutType) ? (podcastLayoutCookie as LayoutType) : "grid";
+
+  const episodeLayoutCookie = cookieStore.get("episodesLayout")?.value;
+  const initialEpisodeLayout: LayoutType = validLayouts.includes(episodeLayoutCookie as LayoutType) ? (episodeLayoutCookie as LayoutType) : "grid";
 
   return (
     <>
-      <LayoutPreferenceClient initialLayout={initialLayout}>
+      <LayoutPreferenceClient initialLayout={initialPodcastLayout} cookieName="podcastsLayout">
         <PodcastsWithLayout podcasts={podcasts} searchTerm={searchTerm} />
+      </LayoutPreferenceClient>
+      <LayoutPreferenceClient initialLayout={initialEpisodeLayout} cookieName="episodesLayout">
         <EpisodesWithLayout episodes={episodes} searchTerm={searchTerm} />
       </LayoutPreferenceClient>
     </>

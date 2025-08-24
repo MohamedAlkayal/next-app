@@ -8,17 +8,18 @@ interface Props {
     initialLayout: LayoutType;
     layout?: LayoutType;
     onLayoutChange?: (layout: LayoutType) => void;
+    cookieName: string;
     children: React.ReactNode;
 }
 
-export default function LayoutPreferenceClient({ initialLayout, layout: controlledLayout, onLayoutChange, children }: Props) {
+export default function LayoutPreferenceClient({ initialLayout, layout: controlledLayout, onLayoutChange, cookieName, children }: Props) {
     const [internalLayout, setInternalLayout] = useState<LayoutType>(initialLayout);
 
     const layout = controlledLayout !== undefined ? controlledLayout : internalLayout;
 
     const setLayout = (newLayout: LayoutType) => {
         setInternalLayout(newLayout);
-        Cookies.set("episodesLayout", newLayout, { expires: 365 });
+        Cookies.set(cookieName, newLayout, { expires: 365 });
         if (onLayoutChange) {
             onLayoutChange(newLayout);
         }
