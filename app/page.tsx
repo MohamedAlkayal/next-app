@@ -24,8 +24,12 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ [
     ]);
     podcasts = dataPodcasts.results;
     episodes = dataEpisodes.results;
-  } catch (err: any) {
-    error = err.message || "Failed to fetch podcasts";
+    } catch (err) {
+      if (typeof err === 'object' && err !== null && 'message' in err && typeof (err as any).message === 'string') {
+        error = (err as { message: string }).message;
+      } else {
+        error = "Failed to fetch podcasts";
+      }
   }
 
   if (!searchTerm.trim()) {

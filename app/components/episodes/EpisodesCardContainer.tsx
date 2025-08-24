@@ -29,10 +29,10 @@ const EpisodesCardsContainer: React.FC<EpisodesCardsContainerProps> = ({ searchT
     const [layoutMenuOpen, setLayoutMenuOpen] = React.useState(false);
 
     const handleLayoutMenuToggle = () => setLayoutMenuOpen((open) => !open);
-    const handleLayoutChange = (key: 'grid' | 'scroll' | 'list' | 'compact') => {
-        if (onLayoutChange) onLayoutChange(key);
-        setLayoutMenuOpen(false);
-    };
+        const handleLayoutChange = (key: 'grid' | 'scroll' | 'list' | 'compact') => {
+            if (onLayoutChange) onLayoutChange(key);
+            setLayoutMenuOpen(false);
+        };
 
     return (
         <>
@@ -49,7 +49,7 @@ const EpisodesCardsContainer: React.FC<EpisodesCardsContainerProps> = ({ searchT
                                     <button
                                         key={opt.key}
                                         className={`p-2 block w-full text-left text-sm cursor-pointer duration-300 hover:bg-black/20 ${layout === opt.key ? 'bg-black/10 text-white' : 'text-white/80'}`}
-                                        onClick={() => handleLayoutChange(opt.key as any)}
+                                            onClick={() => handleLayoutChange(opt.key as 'grid' | 'scroll' | 'list' | 'compact')}
                                     >
                                         {opt.label}
                                     </button>
