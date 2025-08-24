@@ -28,6 +28,5 @@ export async function fetchPodcasts(searchTerm: string): Promise<ItunesSearchRes
 
     }
     const data = await response.json();
-    console.log("Fetched podcasts:", data);
     return data;
 }

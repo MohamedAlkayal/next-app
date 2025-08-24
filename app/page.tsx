@@ -43,9 +43,6 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ [
 
   return (
     <>
-      <head>
-        <title>Podcasts | Thmanyah Task</title>
-      </head>
       <LayoutPreferenceClient initialLayout={initialLayout}>
         <PodcastsWithLayout podcasts={podcasts} searchTerm={searchTerm} />
         <EpisodesWithLayout episodes={episodes} searchTerm={searchTerm} />
