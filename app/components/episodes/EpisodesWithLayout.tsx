@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import { Episode } from "../../types/Episode";
-import EpisodesCardsContainer from "./EpisodesCardContainer";
-import { useLayoutPreference } from "../../LayoutPreferenceClient";
+import { Episode } from "@/app/types/Episode";
+import EpisodesCardsContainer from "@/app/components/episodes/EpisodesCardContainer";
+import { useLayoutPreference } from "@/app/LayoutPreferenceClient";
 
 interface Props {
     episodes: Episode[];

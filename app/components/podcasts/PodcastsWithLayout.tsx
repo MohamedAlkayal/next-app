@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import { Podcast } from "../../types/Podcast";
-import PodcastCardsContainer from "./PodcastCardsContainer";
-import { useLayoutPreference } from "../../LayoutPreferenceClient";
+import { Podcast } from "@/app/types/Podcast";
+import PodcastCardsContainer from "@/app/components/podcasts/PodcastCardsContainer";
+import { useLayoutPreference } from "@/app/LayoutPreferenceClient";
 
 interface Props {
     podcasts: Podcast[];

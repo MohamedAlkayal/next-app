@@ -2,12 +2,12 @@
 "use client";
 import React from "react";
 import { Icon } from '@iconify/react';
-import Grid from "../shared/Grid";
-import Scroll from "../shared/Scroll";
-import Empty from "../shared/Empty";
-import { Episode } from "../../types/Episode";
-import EpisodeCard from "./EpisodeCard";
-import EpisodeListItem from "./EpisodeListItem";
+import Grid from "@/app/components/shared/Grid";
+import Scroll from "@/app/components/shared/Scroll";
+import Empty from "@/app/components/shared/Empty";
+import { Episode } from "@/app/types/Episode";
+import EpisodeCard from "@/app/components/episodes/EpisodeCard";
+import EpisodeListItem from "@/app/components/episodes/EpisodeListItem";
 
 interface EpisodesCardsContainerProps {
     searchTerm: string;

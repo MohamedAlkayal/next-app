@@ -1,12 +1,12 @@
 
 "use client";
-import PodcastCard from "./PodcastCard";
+import PodcastCard from "@/app/components/podcasts/PodcastCard";
 import React, { useState } from "react";
 import { Icon } from '@iconify/react';
-import Grid from "../shared/Grid";
-import Scroll from "../shared/Scroll";
-import Empty from "../shared/Empty";
-import { Podcast } from "../../types/Podcast";
+import Grid from "@/app/components/shared/Grid";
+import Scroll from "@/app/components/shared/Scroll";
+import Empty from "@/app/components/shared/Empty";
+import { Podcast } from "@/app/types/Podcast";
 
 interface PodcastCardsContainerProps {
     searchTerm: string;

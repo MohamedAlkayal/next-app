@@ -1,8 +1,8 @@
 
-import Header from "./components/app/Header";
-import Footer from "./components/app/Footer";
-import Sidebar from "./components/app/Sidebar";
-import "./globals.css";
+import Header from "@/app/components/app/Header";
+import Footer from "@/app/components/app/Footer";
+import Sidebar from "@/app/components/app/Sidebar";
+import "@/app/globals.css";
 
 export default function RootLayout({
   children,
