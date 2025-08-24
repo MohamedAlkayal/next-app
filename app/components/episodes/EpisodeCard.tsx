@@ -39,13 +39,13 @@ const EpisodeCard: React.FC<EpisodeCardProps> = ({ collection, track, release, d
             </div>
             <div className="flex-1 min-w-0 flex flex-col justify-between p-4 text-sm text-white">
                 <div>
-                    <div className="flex items-center justify-between mb-0">
-                        <p className="mb-0 overflow-hidden whitespace-nowrap text-ellipsis">{collection}</p>
+                    <div className="flex items-center justify-between mb-1">
+                        <p className="mb-0 overflow-hidden whitespace-nowrap text-ellipsis">{track}</p>
                         <button className="bg-transparent cursor-pointer text-white/50 hover:text-white" >
                             <Icon icon="lucide:ellipsis-vertical" />
                         </button>
                     </div>
-                    <p className="mb-2 overflow-hidden whitespace-nowrap text-ellipsis">{track}</p>
+                    <p className="mb-2 overflow-hidden whitespace-nowrap text-ellipsis text-mirage-500">{collection}</p>
                     <p className="mb-2 overflow-hidden text-ellipsis line-clamp-2 text-white/40">{description}</p>
                 </div>
                 <div className="flex gap-1 text-xs text-white/70">
